@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores Amarillas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: url('img/bg-FlowerY.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Contenedor principal */
+    .contenedor {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Cartel superior */
+    .cartel {
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Carta */
+    .carta {
+      width: 300px;
+      height: 180px;
+      background: #f8d7da;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: height 1s ease;
+    }
+
+    .carta.abierta {
+      height: 350px;
+    }
+
+    .mensaje {
+      opacity: 0;
+      padding: 1rem;
+      transition: opacity 1s ease;
+    }
+
+    .carta.abierta .mensaje {
+      opacity: 1;
+    }
+
+    .sobre {
+      background: #e57373;
+      height: 50px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 10px 10px 0 0;
+      transition: transform 1s ease;
+      transform-origin: top;
+    }
+
+    .carta.abierta .sobre {
+      transform: rotateX(180deg);
+    }
+
+    /* Galería de imágenes */
+    .galeria {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .galeria img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fade 24s infinite;
+    }
+    
+    .galeria img:nth-child(1) { animation-delay: 0s; }
+    .galeria img:nth-child(2) { animation-delay: 6s; }
+    .galeria img:nth-child(3) { animation-delay: 18s; }
+    .galeria img:nth-child(4) { animation-delay: 54s; }
+    .galeria img:nth-child(5) { animation-delay: 162s; }
+
+   
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      30% { opacity: 1; }
+      40% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contenedor {
+        flex-direction: column;
+      }
+      .galeria, .carta {
+        width: 90%;
+        max-width: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cartel superior -->
+  <div class="cartel">
+    <p><b>Hoy no puedo darte un ramo en mis manos,<br>pero sí puedo darte un jardín en mi corazón.</b><br>
+    <i>Feliz Día de las Flores Amarillas</i></p>
+  </div>
+
+  <!-- Contenedor principal -->
+  <div class="contenedor">
+
+    <!-- Galería -->
+    <div class="galeria">
+      <img src="photos/picture1.jpg" alt="imagen1">
+      <img src="photos/picture2.jpg" alt="imagen2">
+      <img src="photos/picture3.jpg" alt="imagen3">
+      <img src="photos/picture4.jpg" alt="imagen4">
+      <img src="photos/picture5.jpg" alt="imagen5">
+    </div>
+
+    <!-- Carta -->
+    <div class="carta" id="carta">
+      <div class="sobre"></div>
+      <div class="mensaje">
+        <p>Quiero que estas flores simbolicen lo que eres para mí: esperanza, ternura y un amor que crece y florece con cada instante compartido.<br><br>
+        Ojalá al recibirlas recuerdes lo especial que eres, lo mucho que te amo y cómo deseo caminar contigo entre campos infinitos de flores amarillas, donde solo existamos tú y yo, rodeados de todo lo bonito que merecemos.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const carta = document.getElementById('carta');
+    carta.addEventListener('click', () => {
+      carta.classList.toggle('abierta');
+    });
+  </script>
+</body>
+</html>
